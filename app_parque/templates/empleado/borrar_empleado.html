@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Borrar Empleado{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg border-danger">
+            <div class="card-header bg-danger text-white">
+                <h2 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Confirmar Borrado de Empleado</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead text-center">¿Está absolutamente seguro de que desea eliminar al siguiente empleado?</p>
+                
+                <ul class="list-group mb-4">
+                    <li class="list-group-item"><strong>ID:</strong> {{ empleado.id_emp }}</li>
+                    <li class="list-group-item"><strong>Nombre:</strong> {{ empleado.nombre }} {{ empleado.apellido }}</li>
+                    <li class="list-group-item"><strong>Puesto:</strong> {{ empleado.puesto }}</li>
+                    <li class="list-group-item list-group-item-danger"><strong>Advertencia:</strong> ¡Esta acción es irreversible!</li>
+                </ul>
+
+                <form method="POST" action="{% url 'borrar_empleado' empleado.id_emp %}" class="d-flex justify-content-between">
+                    {% csrf_token %}
+                    <a href="{% url 'ver_empleado' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                    <button type="submit" class="btn btn-danger btn-lg"><i class="fas fa-trash-alt me-1"></i> Borrar Permanentemente</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

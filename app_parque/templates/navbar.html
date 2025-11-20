@@ -1,0 +1,86 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand me-4" href="{% url 'inicio_parque' %}">
+            <i class="fas fa-magic me-2"></i> 
+            Sistema de Administración Parque de Atracciones
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'inicio_parque' %}">
+                        <i class="fas fa-home me-1"></i> Inicio🎢
+                    </a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-tie me-1"></i> Empleado👨
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_empleado' %}">Agregar empleado</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_empleado' %}">Ver empleado</a></li>
+                        <li class="dropdown-item disabled">Actualizar empleado</li>
+                        <li class="dropdown-item disabled">Borrar empleado</li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-users me-1"></i> Clientes👩
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_cliente' %}">Agregar cliente</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_cliente' %}">Ver cliente</a></li>
+                        <li class="dropdown-item disabled">Actualizar cliente</li>
+                        <li class="dropdown-item disabled">Borrar cliente</li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-roller-coaster me-1"></i> Atracciones🎆
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_atraccion' %}">Agregar atracción</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_atraccion' %}">Ver atracciones</a></li>
+                        <li class="dropdown-item disabled">Actualizar atracción</li>
+                        <li class="dropdown-item disabled">Borrar atracción</li>
+                    </ul>
+                </li>
+                
+                {# ----------------------------------- #}
+                {# BOLETOS (NUEVO) #}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ticket-alt me-1"></i> Boletos🎫
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_boleto' %}">Agregar boleto</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_boleto' %}">Ver boletos</a></li>
+                        <li class="dropdown-item disabled">Actualizar boleto</li>
+                        <li class="dropdown-item disabled">Borrar boleto</li>
+                    </ul>
+                </li>
+
+                {# TIENDAS Y RESTAURANTES (NUEVO) #}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-store me-1"></i> Locales🏰
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_resttienda' %}">Agregar local</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_resttienda' %}">Ver locales</a></li>
+                        <li class="dropdown-item disabled">Actualizar local</li>
+                        <li class="dropdown-item disabled">Borrar local</li>
+                    </ul>
+                </li>
+                {# ----------------------------------- #}
+            </ul>
+        </div>
+    </div>
+</nav>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

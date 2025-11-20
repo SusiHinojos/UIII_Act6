@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Atracción{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0"><i class="fas fa-roller-coaster me-2"></i>Formulario para Agregar Atracción</h2>
+            </div>
+            <div class="card-body">
+                {% if error_message %}
+                    <div class="alert alert-danger">{{ error_message }}</div>
+                {% endif %}
+                <form method="POST" action="{% url 'agregar_atraccion' %}">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre de la Atracción:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tipo" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control" id="tipo" name="tipo" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="capacidad" class="form-label">Capacidad:</label>
+                        <input type="number" class="form-control" id="capacidad" name="capacidad" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="estado" class="form-label">Estado (Ej. Operativa, Mantenimiento):</label>
+                        <input type="text" class="form-control" id="estado" name="estado" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="altura_min" class="form-label">Altura Mínima (metros, Ej. 1.20):</label>
+                        <input type="number" step="0.01" class="form-control" id="altura_min" name="altura_min" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="id_emp" class="form-label">Empleado Encargado:</label>
+                        <select class="form-select" id="id_emp" name="id_emp">
+                            <option value="">-- Seleccione Empleado (Opcional) --</option>
+                            {% for empleado in empleados %}
+                                <option value="{{ empleado.id_emp }}">{{ empleado.nombre }} {{ empleado.apellido }} ({{ empleado.puesto }})</option>
+                            {% endfor %}
+                        </select>
+                        <small class="form-text text-muted">Asegúrese de haber agregado empleados previamente.</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i> Guardar Atracción</button>
+                    <a href="{% url 'ver_atraccion' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

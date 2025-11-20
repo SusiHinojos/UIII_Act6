@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Actualizar Local{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg">
+            <div class="card-header bg-warning text-dark">
+                <h2 class="mb-0"><i class="fas fa-edit me-2"></i>Actualizar Datos de Local</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{% url 'realizar_actualizacion_resttienda' resttienda.id_local %}">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre del Local:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ resttienda.nombre }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tipo" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control" id="tipo" name="tipo" value="{{ resttienda.tipo }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ubicacion" class="form-label">Ubicación:</label>
+                        <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="{{ resttienda.ubicacion }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="horario" class="form-label">Horario:</label>
+                        <input type="text" class="form-control" id="horario" name="horario" value="{{ resttienda.horario }}" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="id_emp" class="form-label">Empleado Encargado:</label>
+                        <select class="form-select" id="id_emp" name="id_emp">
+                            <option value="">-- Sin Asignar --</option>
+                            {% for empleado in empleados %}
+                                <option value="{{ empleado.id_emp }}" 
+                                    {% if resttienda.id_emp_id == empleado.id_emp %}selected{% endif %}>
+                                    {{ empleado.nombre }} {{ empleado.apellido }} ({{ empleado.puesto }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning text-white"><i class="fas fa-upload me-1"></i> Actualizar</button>
+                    <a href="{% url 'ver_resttienda' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

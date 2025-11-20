@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Borrar Atracción{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg border-danger">
+            <div class="card-header bg-danger text-white">
+                <h2 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Confirmar Borrado de Atracción</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead text-center">¿Está seguro de eliminar la atracción: **{{ atraccion.nombre }}**?</p>
+                
+                <ul class="list-group mb-4">
+                    <li class="list-group-item"><strong>ID:</strong> {{ atraccion.id_atr }}</li>
+                    <li class="list-group-item"><strong>Tipo:</strong> {{ atraccion.tipo }}</li>
+                    <li class="list-group-item"><strong>Encargado:</strong> {{ atraccion.id_emp.nombre|default:"N/A" }}</li>
+                    <li class="list-group-item list-group-item-danger"><strong>Advertencia:</strong> Esto también eliminará cualquier registro de Cliente asociado a esta atracción.</li>
+                </ul>
+
+                <form method="POST" action="{% url 'borrar_atraccion' atraccion.id_atr %}" class="d-flex justify-content-between">
+                    {% csrf_token %}
+                    <a href="{% url 'ver_atraccion' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                    <button type="submit" class="btn btn-danger btn-lg"><i class="fas fa-trash-alt me-1"></i> Borrar Permanentemente</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

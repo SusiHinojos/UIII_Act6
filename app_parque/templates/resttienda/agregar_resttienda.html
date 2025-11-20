@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Local{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg">
+            <div class="card-header bg-info text-white">
+                <h2 class="mb-0"><i class="fas fa-store me-2"></i>Formulario para Agregar Tienda/Restaurante</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{% url 'agregar_resttienda' %}">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre del Local:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tipo" class="form-label">Tipo (Tienda o Restaurante):</label>
+                        <input type="text" class="form-control" id="tipo" name="tipo" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ubicacion" class="form-label">Ubicación:</label>
+                        <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="horario" class="form-label">Horario:</label>
+                        <input type="text" class="form-control" id="horario" name="horario" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="id_emp" class="form-label">Empleado Encargado:</label>
+                        <select class="form-select" id="id_emp" name="id_emp">
+                            <option value="">-- Seleccione Empleado (Opcional) --</option>
+                            {% for empleado in empleados %}
+                                <option value="{{ empleado.id_emp }}">{{ empleado.nombre }} {{ empleado.apellido }} ({{ empleado.puesto }})</option>
+                            {% endfor %}
+                        </select>
+                        <small class="form-text text-muted">Empleado asignado al local.</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-info text-white"><i class="fas fa-save me-1"></i> Guardar Local</button>
+                    <a href="{% url 'ver_resttienda' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

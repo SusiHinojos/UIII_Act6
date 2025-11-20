@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %} {# <-- DEBES AGREGAR ESTA LÍNEA AL INICIO #}
+
+{% block title %}Inicio - Sistema Parque de Atracciones{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-lg p-4 h-100 border-0">
+            <h1 class="text-primary mb-3"><i class="fas fa-umbrella-beach me-2"></i>Bienvenido al Sistema de Administración</h1>
+            <p class="lead">
+                Esta plataforma permite la gestión completa de los recursos del **Parque de Atracciones**, incluyendo Empleados, Clientes y las propias Atracciones.
+            </p>
+            <p>
+                Utilice el menú superior para acceder a las secciones de administración. Actualmente, la gestión de **Empleados**, **Atracciones** y **Clientes** está activa.
+            </p>
+            <hr>
+            <blockquote class="blockquote mb-0">
+                <p class="mb-0 text-secondary">"Un día en el parque es un recuerdo que dura para siempre."</p>
+                <footer class="blockquote-footer">Lidia Hinojos</footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-lg h-100 border-0 d-flex align-items-center justify-content-center p-3">
+            
+            {# ------------------------------------------------------------------------------------------------ #}
+            {# AQUÍ SE COLOCA LA IMAGEN USANDO LA RUTA DESDE LA CARPETA 'static' #}
+            {# CAMBIA 'parque_inicio.jpg' SI TU ARCHIVO TIENE OTRO NOMBRE O EXTENSIÓN #}
+            {# ------------------------------------------------------------------------------------------------ #}
+            <img 
+                src="{% static 'img/parque.jpg' %}" 
+                alt="Imagen del Parque de Atracciones" 
+                class="img-fluid rounded shadow-sm">
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
